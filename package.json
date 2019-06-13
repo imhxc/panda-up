@@ -1,0 +1,71 @@
+{
+	"name": "panda-up",
+	"displayName": "panda-up",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.PandaUp"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.PandaUp",
+				"title": "PandaUp"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "PandaUp configuration",
+			"properties": {
+				"pandaUp.uploadTarget": {
+					"type": "string",
+					"default": "aliOSS",
+					"enum": [
+						"aliOSS"
+					]
+				},
+				"pandaUp.aliOSSRegion": {
+					"type": "string",
+					"default": "",
+					"description": "https://help.aliyun.com/document_detail/31837.html?spm=a2c4g.11186623.2.16.d2f144c5mzd6Vb#concept-zt4-cvy-5db"
+				},
+				"pandaUp.aliAccessKeyId": {
+					"type": "string",
+					"default": ""
+				},
+				"pandaUp.aliAccessKeySecret": {
+					"type": "string",
+					"default": ""
+				},
+				"pandaUp.aliOSSBucket": {
+					"type": "string",
+					"default": ""
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"ali-oss": "^6.1.1"
+	}
+}
